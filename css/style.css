@@ -1,14 +1,12 @@
 * {
     box-sizing: border-box;
 }
-
 body {
     background-color: rgb(37, 35, 35);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 }
-
 nav a {
     color: white;
     text-decoration: none;
@@ -19,38 +17,36 @@ nav a {
 nav a:hover {
     color: gold; 
 }
-
 h1 {
     font-size: 50px;
     font-weight: 700;
     margin: 0;
     line-height: 1.1;
 }
-
 nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
 }
-
 header {
     padding: 20px 40px;
+    background-color: rgb(20, 20, 20);
 }
-
 header img {
     width: 200px;
 }
-
 main {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
 }
-
 section {
     padding: 80px 0;
 }
-
+main > section:not(#inicio) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
 h2 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -65,18 +61,65 @@ h2 {
 #inicio {
     min-height: 80vh;
     display: flex;
-    align-items: flex-start;
+    background-image:
+    linear-gradient(
+        to right, rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35)), url("../assets/images/hero/hero-z7.png");
+    background-size: cover;
+    background-position: center;
+}
+.conteudo-hero {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
     gap: 24px;
 }
 #inicio span {
-    color: gold;
     display: block;
+    position: relative;
+    font-size: 1.7em;
+    font-weight: 900;
+    margin-bottom: 16px;
+}
+#inicio span::before {
+    content: attr(data-text);
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    color: rgb(170, 105, 0);
+
+    -webkit-text-stroke: 1px rgb(170, 105, 0);
+}
+#inicio span strong {
+    position: relative;
+    z-index: 2;
+
+    background: linear-gradient(
+        to bottom,
+        rgb(255, 255, 220) 0%,
+        rgb(255, 235, 120) 18%,
+        rgb(255, 190, 0) 42%,
+        rgb(190, 105, 0) 58%,
+        rgb(255, 215, 60) 76%,
+        rgb(255, 170, 0) 100%
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255, 190, 0, 0.8);
 }
 #inicio h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
+    max-width: 800px;
+    font-size: 3.5rem;
 }
 #inicio p {
     margin: 0;
@@ -209,12 +252,69 @@ h2 {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+.contato-conteudo {
+    max-width: 700px;
+}
+.contato-conteudo p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgb(190, 190, 190);
+    margin: 0 0 24px 0;
+}
+.contato-conteudo > a {
+    color: gold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.redes-sociais {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+.redes-sociais a {
+    width: 56px;
+    height: 56px;
+    border: 1px solid gold;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+.redes-sociais a:hover {
+    background-color: gold;
+}
+.redes-sociais img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+footer {
+    border-top: 1px solid rgb(70, 68, 68);
+    padding: 32px 40px;
+}
+.container-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.container-footer p {
+    margin: 0;
+    color: rgb(190, 190, 190);
+    font-size: 0.875rem;
+    text-align: center;
+}
 @media (max-width: 768px) {
     .projeto{
         flex-basis: 100%;
         padding: 20px;
     }
-    main {
+    main > section:not(#inicio) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .conteudo-hero {
         padding: 0 20px;
     }
     h1 {
@@ -243,6 +343,9 @@ h2 {
     #inicio {
         min-height: 60vh;
     }
+    #inicio h1{
+        font-size: 2.25rem;
+    }
     header img {
         width: 160px;
     }
@@ -262,7 +365,10 @@ h2 {
     }
     .parceiro img {
         width: 100%;
-        height: 100ox;
+        height: 100px;
         object-fit: contain;
+    }
+    footer {
+        padding: 32px 20px;
     }
 }
